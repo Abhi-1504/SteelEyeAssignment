@@ -27,6 +27,14 @@ def download(url, download_path, filename):
         # Getting the content of the file
         response = requests.get(url)
 
+        markup_file_ext = ["xml", "html"]
+
+        if (
+            filename.split(".")[-1] in markup_file_ext
+            and filename.split(".")[-1] not in response.text
+        ):
+            return file
+
         # Checking if the requests got a correct response
         if response.ok:
             # Creating directories in the given download path if not exists
@@ -112,35 +120,35 @@ def unzip_file(zipped_file, uncompressed_file_path):
         log.info("Extracting the compressed file")
         with zipfile.ZipFile(zipped_file, "r") as zip_ref:
             zip_ref.extractall(uncompressed_file_path)
+
         log.info("Compressed file extracted")
-        log.info("Removing the compressed file")
-        os.remove(zipped_file)
-        log.info("Compressed file removed")
+
         return True
     except Exception as e:
         log.error(f"Error occurred while extracting - {str(e)}")
         return False
 
 
-def create_csv(xml_file, csv_file):
-    """Creates CSV file from the xml file
+def create_csv(xml_file, csv_path):
+    """ Creates CSV from XML File
     Param(s):
-        xml_file (str)  :   Path to XML file
+        xml_file (str)  :   Path of XML file
+        csv_path (str)  :   Path to write csv file
     Return(s):
-        csv_file        :   Path to CSV file
+        csv_file        :   Absolute path of csv file
     """
     try:
         # Checking if the path exists or not
-        if not os.path.exists(csv_file):
+        if not os.path.exists(csv_path):
             # Creating the path
             log.info("Creating CSV file path")
-            os.makedirs(csv_file)
+            os.makedirs(csv_path)
 
         # Extracting the csv file name from xml file
         csv_fname = xml_file.split(os.sep)[-1].split(".")[0] + ".csv"
 
-        # Creating the absolute path to csv file
-        csv_path = os.path.join(os.getcwd(), "csv_file" + os.sep + csv_fname)
+        # Creating csv file path
+        csv_file = os.path.join(csv_path, csv_fname)
 
         log.info("Loading the xml file")
         # Creating xml file itertor
@@ -221,10 +229,10 @@ def create_csv(xml_file, csv_file):
 
         log.info("Creating the CSV file")
         # Creates csv file from the dataframe
-        df.to_csv(csv_path, index=False)
+        df.to_csv(csv_file, index=False)
 
         # returning the csv file path
-        return csv_path
+        return csv_file
 
     except Exception as e:
         log.error(f"Error occurred while extracting - {str(e)}")
