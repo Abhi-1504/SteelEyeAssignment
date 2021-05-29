@@ -161,6 +161,7 @@ def create_csv(xml_file, csv_file):
         extracted_data = []
 
         log.info("Parsing the xml file...")
+        log.info("Extracting the required data from xml")
         # Traversing the xml data
         for event, element in xml_iter:
 
@@ -180,7 +181,6 @@ def create_csv(xml_file, csv_file):
                         if "FinInstrmGnlAttrbts" in elem.tag or "Issr" in elem.tag
                     ]
 
-                    log.info("Extracting the required data from xml")
                     # Traversing through the required tags
                     for tag, elem in reqd_elements:
 
