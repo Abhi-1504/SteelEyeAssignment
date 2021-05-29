@@ -17,9 +17,9 @@ def download(url, download_path, filename):
     Param(s):
         url (str)           :   download link of file
         download_path (str) :   path to download the file
-        filename            :   filename to give the downlaoded xml
+        filename (str)      :   filename to give the downlaoded xml
     Return(s):
-        file (str)  :   absolute path to the downloaded xml file
+        file (str)          :   absolute path to the downloaded xml file
     """
     file = ""
     log.info("Downloading the xml file.")
@@ -61,9 +61,9 @@ def download(url, download_path, filename):
 def parse_source_xml(xml_file):
     """Parses the source xml file
     Param(s):
-        xml_file (str)  :   Path to the xml file
+        xml_file (str)        :   Path to the xml file
     Return(s):
-        download_link   :   Link to download target xml file
+        download_link (str)   :   Link to download target xml file
     """
     try:
         log.info("Loading the xml file.")
@@ -135,7 +135,7 @@ def create_csv(xml_file, csv_path):
         xml_file (str)  :   Path of XML file
         csv_path (str)  :   Path to write csv file
     Return(s):
-        csv_file        :   Absolute path of csv file
+        csv_file (str)  :   Absolute path of csv file
     """
     try:
         # Checking if the path exists or not
@@ -244,8 +244,10 @@ def aws_s3_upload(
     """Uploads a given file to given s3 bucket
     Param(s):
         file (str)                  :   Path of file to upload to s3 bucket
+        region_name (str)           :   name of region s3 bucket is hosted
         aws_access_key_id (str)     :   AWS access key
         aws_secret_access_key (str) :   AWS secret access key
+        bucket_name (str)           :   name of the bucket
     Return(s):
         True (bool) : True for successful upload
     """
