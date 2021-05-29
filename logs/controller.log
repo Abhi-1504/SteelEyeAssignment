@@ -1,0 +1,119 @@
+2021-05-27 01:08:30,874 : INFO : controller : load_config : loading Config file.
+2021-05-27 01:08:30,874 : INFO : controller : load_config : Config file loaded successfully.
+2021-05-27 01:08:30,875 : INFO : controller : main : Extracting xml source file url
+2021-05-27 01:08:30,875 : INFO : controller : main : Extracting xml source file url
+2021-05-27 01:08:30,875 : INFO : controller : main : Calling download_xml function
+2021-05-27 01:08:30,875 : INFO : helper_functions : download_xml : Downloading the xml file.
+2021-05-27 01:08:31,772 : INFO : helper_functions : download_xml : xml file downloaded
+2021-05-29 09:24:57,969 : INFO : controller : load_config : loading Config file.
+2021-05-29 09:24:57,971 : INFO : controller : load_config : Config file loaded successfully.
+2021-05-29 09:24:57,972 : INFO : controller : main : Extracting xml source file url
+2021-05-29 09:24:57,972 : INFO : controller : main : Extracting xml source file url
+2021-05-29 09:24:57,972 : INFO : controller : main : Calling download_xml function
+2021-05-29 09:24:57,972 : INFO : helper_functions : download : Downloading the xml file.
+2021-05-29 09:25:01,257 : INFO : helper_functions : download : xml file downloaded
+2021-05-29 09:37:06,614 : INFO : controller : load_config : loading Config file.
+2021-05-29 09:37:06,614 : INFO : controller : load_config : Config file loaded successfully.
+2021-05-29 09:37:06,614 : INFO : controller : main : Extracting xml source file url
+2021-05-29 09:37:06,614 : INFO : controller : main : Extracting xml source file url
+2021-05-29 09:37:06,614 : INFO : controller : main : Calling download function
+2021-05-29 09:37:06,614 : INFO : helper_functions : download : Downloading the xml file.
+2021-05-29 09:37:07,964 : INFO : helper_functions : download : xml file downloaded
+2021-05-29 09:37:07,965 : INFO : controller : main : Calling parse_source_xml function
+2021-05-29 09:37:07,965 : INFO : helper_functions : parse_source_xml : Loading the xml file.
+2021-05-29 09:37:07,965 : ERROR : helper_functions : parse_source_xml : Error occured - read
+2021-05-29 09:39:53,929 : INFO : helper_functions : parse_source_xml : Loading the xml file.
+2021-05-29 09:39:53,929 : INFO : helper_functions : parse_source_xml : Parsing the xml file.
+2021-05-29 09:39:53,929 : INFO : helper_functions : parse_source_xml : Traversing all the doc elements.
+2021-05-29 09:39:53,929 : INFO : helper_functions : parse_source_xml : Extracting the file type
+2021-05-29 09:39:53,929 : INFO : helper_functions : parse_source_xml : Match found for file type DLTINS
+2021-05-29 09:39:53,929 : INFO : helper_functions : parse_source_xml : Extracting the file name
+2021-05-29 09:39:53,930 : INFO : helper_functions : parse_source_xml : Extracting the file download link
+2021-05-29 09:40:26,433 : INFO : helper_functions : parse_source_xml : Loading the xml file.
+2021-05-29 09:40:26,433 : INFO : helper_functions : parse_source_xml : Parsing the xml file.
+2021-05-29 09:40:26,433 : INFO : helper_functions : parse_source_xml : Traversing all the doc elements.
+2021-05-29 09:40:26,433 : INFO : helper_functions : parse_source_xml : Extracting the file type
+2021-05-29 09:40:26,433 : INFO : helper_functions : parse_source_xml : Match found for file type DLTINS
+2021-05-29 09:40:26,433 : INFO : helper_functions : parse_source_xml : Extracting the file name
+2021-05-29 09:40:26,434 : INFO : helper_functions : parse_source_xml : Extracting the file download link
+2021-05-29 09:40:30,263 : INFO : controller : load_config : loading Config file.
+2021-05-29 09:40:30,265 : INFO : controller : load_config : Config file loaded successfully.
+2021-05-29 09:40:30,265 : INFO : controller : main : Extracting xml source file url
+2021-05-29 09:40:30,265 : INFO : controller : main : Extracting xml source file url
+2021-05-29 09:40:30,265 : INFO : controller : main : Calling download function
+2021-05-29 09:40:30,265 : INFO : helper_functions : download : Downloading the xml file.
+2021-05-29 09:40:35,034 : INFO : helper_functions : download : xml file downloaded
+2021-05-29 09:40:35,034 : INFO : controller : main : Calling parse_source_xml function
+2021-05-29 09:40:35,035 : INFO : helper_functions : parse_source_xml : Loading the xml file.
+2021-05-29 09:40:35,035 : ERROR : helper_functions : parse_source_xml : Error occurred - read
+2021-05-29 09:42:01,684 : INFO : controller : load_config : loading Config file.
+2021-05-29 09:42:01,685 : INFO : controller : load_config : Config file loaded successfully.
+2021-05-29 09:42:01,685 : INFO : controller : main : Extracting xml source file url
+2021-05-29 09:42:01,686 : INFO : controller : main : Extracting xml source file url
+2021-05-29 09:42:01,686 : INFO : controller : main : Calling download function
+2021-05-29 09:42:01,686 : INFO : helper_functions : download : Downloading the xml file.
+2021-05-29 09:42:07,207 : INFO : helper_functions : download : xml file downloaded
+2021-05-29 09:42:07,208 : INFO : controller : main : Calling parse_source_xml function
+2021-05-29 09:42:07,208 : INFO : helper_functions : parse_source_xml : Loading the xml file.
+2021-05-29 09:42:07,209 : ERROR : helper_functions : parse_source_xml : Error occurred - read
+2021-05-29 09:43:59,002 : INFO : controller : load_config : loading Config file.
+2021-05-29 09:43:59,002 : INFO : controller : load_config : Config file loaded successfully.
+2021-05-29 09:43:59,002 : INFO : controller : main : Extracting xml source file url
+2021-05-29 09:43:59,002 : INFO : controller : main : Extracting xml source file url
+2021-05-29 09:43:59,004 : INFO : controller : main : Calling download function
+2021-05-29 09:43:59,004 : INFO : helper_functions : download : Downloading the xml file.
+2021-05-29 09:44:00,644 : INFO : helper_functions : download : xml file downloaded
+2021-05-29 09:44:00,645 : INFO : controller : main : Calling parse_source_xml function
+2021-05-29 09:44:00,646 : INFO : helper_functions : parse_source_xml : Loading the xml file.
+2021-05-29 09:44:00,646 : ERROR : helper_functions : parse_source_xml : Error occurred - read
+2021-05-29 09:45:00,967 : INFO : controller : load_config : loading Config file.
+2021-05-29 09:45:00,968 : INFO : controller : load_config : Config file loaded successfully.
+2021-05-29 09:45:00,968 : INFO : controller : main : Extracting xml source file url
+2021-05-29 09:45:00,968 : INFO : controller : main : Extracting xml source file url
+2021-05-29 09:45:00,968 : INFO : controller : main : Calling download function
+2021-05-29 09:45:00,968 : INFO : helper_functions : download : Downloading the xml file.
+2021-05-29 09:45:02,932 : INFO : helper_functions : download : xml file downloaded
+2021-05-29 09:45:02,933 : INFO : controller : main : Calling parse_source_xml function
+2021-05-29 09:45:02,933 : INFO : helper_functions : parse_source_xml : Loading the xml file.
+2021-05-29 09:45:02,934 : INFO : helper_functions : parse_source_xml : Parsing the xml file.
+2021-05-29 09:45:02,934 : INFO : helper_functions : parse_source_xml : Traversing all the doc elements.
+2021-05-29 09:45:02,934 : INFO : helper_functions : parse_source_xml : Extracting the file type
+2021-05-29 09:45:02,935 : INFO : helper_functions : parse_source_xml : Match found for file type DLTINS
+2021-05-29 09:45:02,935 : INFO : helper_functions : parse_source_xml : Extracting the file name
+2021-05-29 09:45:02,935 : INFO : helper_functions : parse_source_xml : Extracting the file download link
+2021-05-29 09:45:42,877 : INFO : controller : load_config : loading Config file.
+2021-05-29 09:45:42,877 : INFO : controller : load_config : Config file loaded successfully.
+2021-05-29 09:45:42,877 : INFO : controller : main : Extracting xml source file url
+2021-05-29 09:45:42,877 : INFO : controller : main : Extracting xml source file url
+2021-05-29 09:45:42,878 : INFO : controller : main : Calling download function
+2021-05-29 09:45:42,878 : INFO : helper_functions : download : Downloading the xml file.
+2021-05-29 09:45:46,555 : INFO : helper_functions : download : xml file downloaded
+2021-05-29 09:45:46,556 : INFO : controller : main : Calling parse_source_xml function
+2021-05-29 09:45:46,556 : INFO : helper_functions : parse_source_xml : Loading the xml file.
+2021-05-29 09:45:46,557 : INFO : helper_functions : parse_source_xml : Parsing the xml file.
+2021-05-29 09:45:46,558 : INFO : helper_functions : parse_source_xml : Traversing all the doc elements.
+2021-05-29 09:45:46,558 : INFO : helper_functions : parse_source_xml : Extracting the file type
+2021-05-29 09:45:46,558 : INFO : helper_functions : parse_source_xml : Match found for file type DLTINS
+2021-05-29 09:45:46,558 : INFO : helper_functions : parse_source_xml : Extracting the file name
+2021-05-29 09:45:46,559 : INFO : helper_functions : parse_source_xml : Extracting the file download link
+2021-05-29 09:45:46,559 : INFO : controller : main : Calling download function
+2021-05-29 09:45:46,559 : INFO : helper_functions : download : Downloading the xml file.
+2021-05-29 09:45:49,420 : ERROR : helper_functions : download : Error occurred - [WinError 123] The filename, directory name, or volume label syntax is incorrect: 'http:'
+2021-05-29 09:46:55,879 : INFO : controller : load_config : loading Config file.
+2021-05-29 09:46:55,881 : INFO : controller : load_config : Config file loaded successfully.
+2021-05-29 09:46:55,881 : INFO : controller : main : Extracting xml source file url
+2021-05-29 09:46:55,881 : INFO : controller : main : Extracting xml source file url
+2021-05-29 09:46:55,882 : INFO : controller : main : Calling download function
+2021-05-29 09:46:55,882 : INFO : helper_functions : download : Downloading the xml file.
+2021-05-29 09:46:57,774 : INFO : helper_functions : download : xml file downloaded
+2021-05-29 09:46:57,775 : INFO : controller : main : Calling parse_source_xml function
+2021-05-29 09:46:57,775 : INFO : helper_functions : parse_source_xml : Loading the xml file.
+2021-05-29 09:46:57,776 : INFO : helper_functions : parse_source_xml : Parsing the xml file.
+2021-05-29 09:46:57,776 : INFO : helper_functions : parse_source_xml : Traversing all the doc elements.
+2021-05-29 09:46:57,777 : INFO : helper_functions : parse_source_xml : Extracting the file type
+2021-05-29 09:46:57,777 : INFO : helper_functions : parse_source_xml : Match found for file type DLTINS
+2021-05-29 09:46:57,777 : INFO : helper_functions : parse_source_xml : Extracting the file name
+2021-05-29 09:46:57,777 : INFO : helper_functions : parse_source_xml : Extracting the file download link
+2021-05-29 09:46:57,779 : INFO : controller : main : Calling download function
+2021-05-29 09:46:57,779 : INFO : helper_functions : download : Downloading the xml file.
+2021-05-29 09:46:59,820 : INFO : helper_functions : download : xml file downloaded
