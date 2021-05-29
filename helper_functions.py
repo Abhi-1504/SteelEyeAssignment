@@ -4,6 +4,7 @@
 Module containing all the helper functions for the process
 """
 import os # For file paths
+import zipfile # For Unzipping file
 import requests # For downlaoding files
 from logger import log # For logging
 from xml.etree import ElementTree as ET# To Parse XML
@@ -47,7 +48,7 @@ def download(url, download_path, filename):
 
 
 def parse_source_xml(xml_file):
-    """Function to Parse the provided xml
+    """Parses the source xml file
     Param(s):
         xml_file (str)  :   Path to the xml file
     Return(s):
@@ -98,9 +99,32 @@ def parse_source_xml(xml_file):
         log.error(f'Error occurred - {str(e)}')
 
 
+def unzip_file(zipped_file, uncompressed_file_path):
+    """Unzips the compressed file to the provided path
+    Param(s):
+        zipped_file (str)               : Compressed File path
+        uncompressed_file_path (str)    : Path to store the uncompressed file
+    """
+    try:
+        log.info('Extracting the compressed file')
+        with zipfile.ZipFile(zipped_file, 'r') as zip_ref:
+            zip_ref.extractall(uncompressed_file_path)
+        log.info('Compressed file extracted')
+        log.info('Removing the compressed file')
+        os.remove(zipped_file)
+        log.info('Compressed file removed')
+        return True
+    except Exception as e:
+        log.error(f'Error occurred while extracting - {str(e)}')
+        return False
 
-def unzip_file(zipped_file):pass
-
-def create_csv(xml_file):pass
+def create_csv(xml_file):
+    """Creates CSV file from the xml file
+    Param(s):
+        xml_file (str)  :   Path to XML file
+    Return(s):
+        csv_file        :   Path to CSV file
+    """
+    pass
 
 def aws_s3_upload():pass
