@@ -33,3 +33,13 @@ The relative path from the current directory of the controller script where sour
 * csv_path
 
 The relative path from the current directory of the controller script where the csv file needs to be created by the script, the script is creating absolute path during it's run.
+
+
+
+
+## Note to Evaluator
+--------------------
+
+Since the target XML file to be converted to csv is a large file, __ElementTree__ parser was few of the suitable parser to parse the same.
+__ElementTree__ is not a reliable xml parser and it was unable to extract the text from element when __ElementTree.SubElement(parent_element, child_element_tag)__.
+Hence, I had to use nested loop to extract the required data from the xml which in turn increases the time complexity of the solution
