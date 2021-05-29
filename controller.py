@@ -66,13 +66,13 @@ def main():
     # Calling the download helper function to download the file
     xml_zip_file = download(file_download_link, download_path, filename)
 
-    if not unzip_file(xml_zip_file):
+    if not unzip_file(xml_zip_file, download_path):
         print('Extration Failed, Kindly check logs for more details')
         print('Exiting...')
         return
 
     xml_file = os.path.join(download_path, filename)
-    
+
 
 
 if __name__ == '__main__':
