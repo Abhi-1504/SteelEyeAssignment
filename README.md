@@ -2,7 +2,7 @@
 --------------------
 
 The repository consist of the solution for SteelEye Python Developer Assignment.
-The solution is wriiten in Python 3 language and requires some additional libraries to be installed.
+The solution is written in Python 3 language and requires some additional libraries to be installed.
 
 ## Table of contents
 --------------------
@@ -60,7 +60,7 @@ Provide the AWS region in which the S3 bucket is hosted
 ## Files
 --------
 
-* config.cfg            : Configuration file consisting of paths and informations required for script to work.
+* config.cfg            : Configuration file consisting of paths and information required for script to work.
 
 * controller.py         : This is the main script that calls the specific function from helper_functions module to execute the steps for the assignment in the required sequence.
 
