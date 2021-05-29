@@ -18,8 +18,12 @@ The solution is Python 3 language and requires some additional libraries to be i
 This solution requires following python modules to be installed:
 
 * os
+* pandas
+* zipfile
 * logging
 * requests
+* xml.etree
+* configparser
 
 ## Configuration
 ----------------
@@ -33,9 +37,6 @@ The relative path from the current directory of the controller script where sour
 * csv_path
 
 The relative path from the current directory of the controller script where the csv file needs to be created by the script, the script is creating absolute path during it's run.
-
-
-
 
 ## Note to Evaluator
 --------------------
