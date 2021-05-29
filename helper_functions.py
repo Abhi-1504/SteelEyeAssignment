@@ -3,11 +3,13 @@
 
 Module containing all the helper functions for the process
 """
-import os # For file paths
-import zipfile # For Unzipping file
-import requests # For downlaoding files
-from logger import log # For logging
-from xml.etree import ElementTree as ET# To Parse XML
+import os  # For file paths
+import zipfile  # For Unzipping file
+import requests  # For downlaoding files
+import pandas as pd  # For Creating csv file
+from logger import log  # For logging
+from xml.etree import ElementTree as ET  # To Parse XML
+
 
 def download(url, download_path, filename):
     """Downloads the given file in the download path
@@ -18,8 +20,8 @@ def download(url, download_path, filename):
     Return(s):
         file (str)  :   absolute path to the downloaded xml file
     """
-    file = ''
-    log.info('Downloading the xml file.')
+    file = ""
+    log.info("Downloading the xml file.")
     try:
         # Getting the content of the file
         response = requests.get(url)
@@ -30,19 +32,19 @@ def download(url, download_path, filename):
             if not os.path.exists(download_path):
                 os.makedirs(download_path)
             # Creating the filepath for downloading xml file
-            file = os.path.join(download_path,filename)
+            file = os.path.join(download_path, filename)
 
             # Creating the xml file at the path with the given file name
-            with open(file, 'wb') as f:
+            with open(file, "wb") as f:
                 f.write(response.content)
 
-                log.info('xml file downloaded')
+                log.info("xml file downloaded")
         else:
             # Logging if the download of the xml file fails
-            log.error('Error while downloading the xml file')
+            log.error("Error while downloading the xml file")
     except Exception as e:
         # Logging if the download of the xml file fails
-        log.error(f'Error occurred - {str(e)}')
+        log.error(f"Error occurred - {str(e)}")
 
     return file
 
@@ -55,48 +57,48 @@ def parse_source_xml(xml_file):
         download_link   :   Link to download target xml file
     """
     try:
-        log.info('Loading the xml file.')
+        log.info("Loading the xml file.")
         # Loading the xml file content
         xmlparse = ET.parse(xml_file)
 
-        log.info('Parsing the xml file.')
+        log.info("Parsing the xml file.")
         # Getting the required xml root (<result>)
         root = xmlparse.getroot()[1]
         # Getting all the doc tag elements
-        docs = root.findall('doc')
+        docs = root.findall("doc")
 
-        log.info('Traversing all the doc elements.')
+        log.info("Traversing all the doc elements.")
         # Traversing through all the doc tag elements
         for doc in docs:
 
-            log.info('Extracting the file type')
+            log.info("Extracting the file type")
             # Extracting file type of the doc
             file_type = doc.find(".//str[@name='file_type']")
 
             # Checking if the file type of the doc 'DLTINS'
-            if file_type.text == 'DLTINS':
+            if file_type.text == "DLTINS":
 
-                log.info('Match found for file type DLTINS')
+                log.info("Match found for file type DLTINS")
 
                 # Extracting the File name and download link from the xml
-                log.info('Extracting the file name')
+                log.info("Extracting the file name")
                 file_name = doc.find(".//str[@name='file_name']").text
 
-                log.info('Extracting the file download link')
+                log.info("Extracting the file download link")
                 download_link = doc.find(".//str[@name='download_link']").text
 
                 # Breaking out of the loop since we got the first file download
                 # link with file type 'DLTINS'
                 break
         else:
-            log.info('Match not found for file type DLTINS')
+            log.info("Match not found for file type DLTINS")
             # Returning from the function if not matches of file type found
             return
 
         return file_name, download_link
 
     except Exception as e:
-        log.error(f'Error occurred - {str(e)}')
+        log.error(f"Error occurred - {str(e)}")
 
 
 def unzip_file(zipped_file, uncompressed_file_path):
@@ -106,25 +108,126 @@ def unzip_file(zipped_file, uncompressed_file_path):
         uncompressed_file_path (str)    : Path to store the uncompressed file
     """
     try:
-        log.info('Extracting the compressed file')
-        with zipfile.ZipFile(zipped_file, 'r') as zip_ref:
+        log.info("Extracting the compressed file")
+        with zipfile.ZipFile(zipped_file, "r") as zip_ref:
             zip_ref.extractall(uncompressed_file_path)
-        log.info('Compressed file extracted')
-        log.info('Removing the compressed file')
+        log.info("Compressed file extracted")
+        log.info("Removing the compressed file")
         os.remove(zipped_file)
-        log.info('Compressed file removed')
+        log.info("Compressed file removed")
         return True
     except Exception as e:
-        log.error(f'Error occurred while extracting - {str(e)}')
+        log.error(f"Error occurred while extracting - {str(e)}")
         return False
 
-def create_csv(xml_file):
+
+def create_csv(xml_file, csv_file):
     """Creates CSV file from the xml file
     Param(s):
         xml_file (str)  :   Path to XML file
     Return(s):
         csv_file        :   Path to CSV file
     """
-    pass
+    try:
+        # Checking if the path exists or not
+        if not os.path.exists(csv_file):
+            # Creating the path
+            log.info("Creating CSV file path")
+            os.makedirs(csv_file)
 
-def aws_s3_upload():pass
+        # Extracting the csv file name from xml file
+        csv_fname = xml_file.split(os.sep)[-1].split(".")[0] + ".csv"
+
+        # Creating the absolute path to csv file
+        csv_path = os.path.join(os.getcwd(), "csv_file" + os.sep + csv_fname)
+
+        log.info("Loading the xml file")
+        # Creating xml file itertor
+        xml_iter = ET.iterparse(xml_file, events=("start",))
+
+        csv_columns = [
+            "FinInstrmGnlAttrbts.Id",
+            "FinInstrmGnlAttrbts.FullNm",
+            "FinInstrmGnlAttrbts.ClssfctnTp",
+            "FinInstrmGnlAttrbts.CmmdtyDerivInd",
+            "FinInstrmGnlAttrbts.NtnlCcy",
+            "Issr",
+        ]
+
+        # Creating empty dataframe with the required column names
+        df = pd.DataFrame(columns=csv_columns)
+
+        # List to store the extacted data
+        extracted_data = []
+
+        log.info("Parsing the xml file...")
+        # Traversing the xml data
+        for event, element in xml_iter:
+
+            # Checking for start of the tags
+            if event == "start":
+
+                # Checking for TermntdRcrd tag in which the required data is
+                if "TermntdRcrd" in element.tag:
+
+                    # Dictionary to store require data in single element
+                    data = {}
+
+                    # List of the required tags (FinInstrmGnlAttrbts, Issr)
+                    reqd_elements = [
+                        (elem.tag, elem)
+                        for elem in element
+                        if "FinInstrmGnlAttrbts" in elem.tag or "Issr" in elem.tag
+                    ]
+
+                    log.info("Extracting the required data from xml")
+                    # Traversing through the required tags
+                    for tag, elem in reqd_elements:
+
+                        if "FinInstrmGnlAttrbts" in tag:
+
+                            # Traversing through the child elements of
+                            # FinInstrmGnlAttrbts element
+                            for child in elem:
+
+                                # Adding the extrcated data in the dictionary
+                                if "Id" in child.tag:
+                                    data[csv_columns[0]] = child.text
+                                elif "FullNm" in child.tag:
+                                    data[csv_columns[1]] = child.text
+                                elif "ClssfctnTp" in child.tag:
+                                    data[csv_columns[2]] = child.text
+                                elif "CmmdtyDerivInd" in child.tag:
+                                    data[csv_columns[3]] = child.text
+                                elif "NtnlCcy" in child.tag:
+                                    data[csv_columns[4]] = child.text
+
+                        # Extracting Issr Tag value
+                        else:
+                            data[csv_columns[5]] = child.text
+
+                    # Appending the single element extracted data in the list
+                    extracted_data.append(data)
+
+        log.info("All the required data extracted from xml file")
+
+        # Appending the extracted data in the data frame
+        df = df.append(extracted_data, ignore_index=True)
+
+        log.info("Dropping empty rows")
+        # Removes empty rows from the dataframe
+        df.dropna(inplace=True)
+
+        log.info("Creating the CSV file")
+        # Creates csv file from the dataframe
+        df.to_csv(csv_path, index=False)
+
+        # returning the csv file path
+        return csv_path
+
+    except Exception as e:
+        log.error(f"Error occurred while extracting - {str(e)}")
+
+
+def aws_s3_upload():
+    pass
