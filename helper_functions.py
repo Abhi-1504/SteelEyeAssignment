@@ -4,6 +4,7 @@
 Module containing all the helper functions for the process
 """
 import os  # For file paths
+import boto3  # For aws s3 bucket operation
 import zipfile  # For Unzipping file
 import requests  # For downlaoding files
 import pandas as pd  # For Creating csv file
@@ -229,5 +230,37 @@ def create_csv(xml_file, csv_file):
         log.error(f"Error occurred while extracting - {str(e)}")
 
 
-def aws_s3_upload():
-    pass
+def aws_s3_upload(
+    file, region_name, aws_access_key_id, aws_secret_access_key, bucket_name
+):
+    """Uploads a given file to given s3 bucket
+    Param(s):
+        file (str)                  :   Path of file to upload to s3 bucket
+        aws_access_key_id (str)     :   AWS access key
+        aws_secret_access_key (str) :   AWS secret access key
+    Return(s):
+        True (bool) : True for successful upload
+    """
+    try:
+        # Extracting the file name from the path
+        filename_in_s3 = file.split(os.sep)[-1]
+
+        log.info("Creating S3 resource object")
+        # Connecting to S3 bucket with boto3
+        s3 = boto3.resource(
+            service_name="s3",
+            region_name=region_name,
+            aws_access_key_id=aws_access_key_id,
+            aws_secret_access_key=aws_secret_access_key,
+        )
+
+        log.info("Uploading the file to s3 bucket")
+        # Uploads the file to the s3 bucket
+        s3.Bucket(bucket_name).upload_file(Filename=file, Key=filename_in_s3)
+
+        log.info("File uploaded successfully to s3 bucket")
+
+        # returning True for successful upload
+        return True
+    except Exception as e:
+        log.error(f"Error occurred while extracting - {str(e)}")
