@@ -70,9 +70,3 @@ Provide the AWS region in which the S3 bucket is hosted
 
 * steel_eye_unittest.py : This module performs the unit test.
 
-## Note to Evaluator
---------------------
-
-Since the target XML file to be converted to csv is a large file, __ElementTree__ parser was few of the suitable parser to parse the same.
-__ElementTree__ is not a reliable xml parser and it was unable to extract the text from element using __ElementTree.SubElement(parent_element, child_element_tag)__.
-Hence, I had to use nested loop to extract the required data from the xml which in turn increases the time complexity of the solution
